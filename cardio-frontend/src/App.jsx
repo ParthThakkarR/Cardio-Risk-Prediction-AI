@@ -10,9 +10,11 @@ import { cva } from "class-variance-authority";
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import './index.css' 
+import dotenv from 'dotenv'
+dotenv.config()
 // or import './App.css' if that is where you pasted the code
 
-const API_URL = "http://127.0.0.1:8000/predict";
+const API_URL = process.env.REACT_APP_API_URL;
 
 // Utility function
 function cn(...inputs) {
