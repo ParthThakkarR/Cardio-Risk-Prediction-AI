@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import joblib
-
+from pathlib import Path
 app = FastAPI()
 
 app.add_middleware(
@@ -11,8 +11,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-pipeline = joblib.load("cardio_pipeline.pkl")
+BASE_DIR = Path(__file__).resolve().parent
+pipeline = joblib.load(BASE_DIR / "cardio_pipeline.pkl")
 
 @app.post("/predict")
 def predict(data: dict):
