@@ -11,8 +11,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-BASE_DIR = Path(__file__).resolve().parent
-pipeline = joblib.load(BASE_DIR / "cardio_pipeline.pkl")
+
+pipeline = joblib.load("cardio_pipeline.pkl")
 
 @app.post("/predict")
 def predict(data: dict):
